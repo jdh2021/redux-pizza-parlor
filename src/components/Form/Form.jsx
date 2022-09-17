@@ -30,9 +30,20 @@ const Form = () => {
             <br/>
             <label>Customer Name</label>
             <input value={name} onChange={handleCustomerName}  type="text" />
+            <br/>
+            <br/>
+            <label>Customer Address</label>
             <input value={address} onChange={handleCustomerAddress}  type="text" />
+            <br/>
+            <br/>
+            <label>Customer City</label>
             <input value={city} onChange={handleCustomerCity}  type="text" />
+            <br/>
+            <br/>
+            <label>Customer Zip</label>
             <input value={zip} onChange={handleCustomerZip}  type="text" />
+            <br/>
+            <br/>
             <button onClick={submit}>Submit</button>
             
     </>
