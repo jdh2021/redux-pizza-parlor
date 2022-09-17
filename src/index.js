@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 
 // pizza reducer
 const pizzas = (state = [], action) => {
-    if (action.TYPE === "SET_PIZZAS") {
+    if (action.type === "SET_PIZZAS") {
         return action.payload;
     } else if (
         // clear state
@@ -17,14 +17,67 @@ const pizzas = (state = [], action) => {
     return state;
 }
 
-const customer_name = '';
-const street_address = '';
-const city = '';
-const zip = '';
-const total = '';
-const type = '';
-
 // order reducer
+const customer_name = (state = '', action) => {
+    if (action.type === "SET_CUSTOMER_NAME") {
+        return action.payload;
+    } else if (
+        // clear state
+        action.type === "CLEAR_ALL") 
+    { return ''; }
+    return state;
+}
+
+const street_address = (state = '', action) => {
+    if (action.type === "SET_STREET_ADDRESS") {
+        return action.payload;
+    } else if (
+        // clear state
+        action.type === "CLEAR_ALL") 
+    { return ''; }
+    return state;
+}
+
+const city = (state = '', action) => {
+    if (action.type === "SET_CITY") {
+        return action.payload;
+    } else if (
+        // clear state
+        action.type === "CLEAR_ALL") 
+    { return ''; }
+    return state;
+}
+
+const zip = (state = '', action) => {
+    if (action.type === "SET_ZIP") {
+        return action.payload;
+    } else if (
+        // clear state
+        action.type === "CLEAR_ALL") 
+    { return ''; }
+    return state;
+}
+
+const total = (state = 0, action) => {
+    if (action.type === "SET_TOTAL") {
+        return state + action.payload;
+    } else if (
+        // clear state
+        action.type === "CLEAR_ALL") 
+    { return 0; }
+    return state;
+}
+
+const type = (state = '', action) => {
+    if (action.type === "SET_TYPE") {
+        return '';
+    } else if (
+        // clear state
+        action.type === "CLEAR_ALL") 
+    { return ''; }
+    return state;
+}
+
 
 const storeInstance = createStore(
     combineReducers({
