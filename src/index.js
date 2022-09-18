@@ -10,6 +10,9 @@ import logger from "redux-logger";
 const pizzas = (state = [], action) => {
     if (action.type === "SET_PIZZAS") {
         return [...state, action.payload];
+    } else if (action.type === "REMOVE_PIZZAS") {
+        // filters objects in state array by id and returns an array with all except the id of the action object
+        return state.filter(({id}) => id !== action.payload.id) 
     } else if (
         // clear state
         action.type === "CLEAR_ALL"
@@ -70,7 +73,11 @@ const zip = (state = "", action) => {
 
 const total = (state = 0, action) => {
     if (action.type === "SET_TOTAL") {
-        return state + action.payload;
+        // add pizza price to state total
+        return state + Number(action.payload);
+    } else if (action.type === "REDUCE_TOTAL") {
+        // subtract removed pizza price from state total 
+        return state - Number(action.payload);
     } else if (
         // clear state
         action.type === "CLEAR_ALL"
