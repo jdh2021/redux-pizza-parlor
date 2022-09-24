@@ -7,6 +7,7 @@ const Form = () => {
     const address = useSelector(store => store.address);
     const city = useSelector(store => store.city);
     const zip = useSelector(store => store.zip);
+    const type = useSelector(store => store.type);
 
     const dispatch = useDispatch();
     const handleCustomerName = (event) => {
@@ -20,6 +21,10 @@ const Form = () => {
     }
     const handleCustomerZip = (event) => {
         dispatch({ type: 'SET_ZIP', payload: event.target.value});
+    }
+
+    const handlePickup = (event) => {
+        dispatch({ type: 'SET_TYPE', payload: event.target.value});
     }
     const submit = () => {
         history.push('/checkout');
@@ -44,6 +49,12 @@ const Form = () => {
             <input value={zip} onChange={handleCustomerZip}  type="text" />
             <br/>
             <br/>
+            
+            <input onClick={((event) => dispatch ({ type: "SET_TYPE", payload: event.target.value}))} type="radio" value="pickup" name="type"></input> 
+            <label>Pickup</label>
+            <input onClick={((event) => dispatch ({ type: "SET_TYPE", payload: event.target.value}))} type="radio" value="delivery" name="type"></input> 
+            <label>Delivery</label>
+
             <button onClick={submit}>Submit</button>
             
     </>
