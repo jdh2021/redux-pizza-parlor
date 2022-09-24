@@ -12,7 +12,7 @@ const pizzas = (state = [], action) => {
         return [...state, action.payload];
     } else if (action.type === "REMOVE_PIZZAS") {
         // filters objects in state array by id and returns an array with all except the id of the action object
-        return state.filter(({id}) => id !== action.payload.id) 
+        return state.filter(({ id }) => id !== action.payload.id);
     } else if (
         // clear state
         action.type === "CLEAR_ALL"
@@ -76,7 +76,7 @@ const total = (state = 0, action) => {
         // add pizza price to state total
         return state + Number(action.payload);
     } else if (action.type === "REDUCE_TOTAL") {
-        // subtract removed pizza price from state total 
+        // subtract removed pizza price from state total
         return state - Number(action.payload);
     } else if (
         // clear state
@@ -89,7 +89,7 @@ const total = (state = 0, action) => {
 
 const type = (state = "", action) => {
     if (action.type === "SET_TYPE") {
-        return "";
+        return action.payload;
     } else if (
         // clear state
         action.type === "CLEAR_ALL"
